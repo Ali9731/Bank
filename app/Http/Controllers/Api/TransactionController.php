@@ -115,7 +115,11 @@ class TransactionController extends Controller
             ], Response::HTTP_OK);
         } else {
             DB::rollBack();
-
+            Log::error('transaction failed : '. 'transaction not saved', [
+                'source' => $from->id,
+                'destination' => $to->id,
+                'amount' => $data['amount'],
+            ]);
             return response([
                 'error' => [
                     'message' => __('messages.transaction_failed'),
