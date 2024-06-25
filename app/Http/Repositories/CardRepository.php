@@ -8,7 +8,10 @@ use App\Repositories\RepositoryInterface;
 
 class CardRepository implements RepositoryInterface
 {
-    public function all() {}
+    public function all()
+    {
+        return Card::query()->with('account')->get();
+    }
 
     public function create(array $data) {}
 
