@@ -19,10 +19,11 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         $number = new Number();
+
         return [
             'user_id' => User::factory(),
-            'account_number' => $number->numberBetween(10000000,99999999),
-            'amount' => $number->numberBetween(100000,1000000),
+            'account_number' => $number->numberBetween(10000000, 99999999),
+            'amount' => $number->numberBetween(100000, 1000000),
         ];
     }
 }

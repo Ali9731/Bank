@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('to_id');
             $table->foreign('to_id')->references('id')->on('cards');
             $table->integer('amount');
+            $table->uuid('tracking_code');
             $table->timestamps();
             $table->softDeletes();
         });
