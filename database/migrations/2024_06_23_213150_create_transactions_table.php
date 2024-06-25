@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('from_id');
+            $table->foreign('from_id')->references('id')->on('cards');
+            $table->unsignedBigInteger('to_id');
+            $table->foreign('to_id')->references('id')->on('cards');
+            $table->integer('amount');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
