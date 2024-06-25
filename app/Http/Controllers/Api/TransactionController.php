@@ -129,6 +129,6 @@ class TransactionController extends Controller
     {
         $userIds = $this->transactionRepository->topUsersIds();
 
-        return $this->userRepository->getByIdsAndNTransactions($userIds, 10);
+        return response()->json(['users' => $this->userRepository->getByIdsAndNTransactions($userIds, 10)]);
     }
 }
