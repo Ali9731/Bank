@@ -68,5 +68,4 @@ class TransactionRequest extends FormRequest
             $this->merge(['amount' => convertToEn($this->amount)]);
         }
     }
-
 }

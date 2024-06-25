@@ -8,7 +8,6 @@ use App\Http\Repositories\CommissionRepository;
 use App\Http\Repositories\TransactionRepository;
 use App\Http\Repositories\UserRepository;
 use App\Http\Requests\TransactionRequest;
-use App\Models\User;
 use App\Repositories\TransactionSettingRepository;
 use App\Services\Sms\SmsService;
 use App\Services\Sms\Strategies\KavehNegar;
@@ -25,6 +24,7 @@ class TransactionController extends Controller
     private $cardsRepository;
 
     private $commissionRepository;
+
     private $userRepository;
 
     private $smsService;
@@ -128,6 +128,7 @@ class TransactionController extends Controller
     public function topUsers()
     {
         $userIds = $this->transactionRepository->topUsersIds();
+
         return $this->userRepository->getByIdsAndNTransactions($userIds, 10);
     }
 }
