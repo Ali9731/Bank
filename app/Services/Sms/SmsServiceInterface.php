@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Notification;
+namespace App\Services\Sms;
 
 use App\Models\User;
 
-interface NotificationInterface
+interface SmsServiceInterface
 {
     public function send(User $user, string $message): bool;
 }

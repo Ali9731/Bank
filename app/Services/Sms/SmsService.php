@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Services\Notification;
+namespace App\Services\Sms;
 
 use App\Models\User;
 
-class NotificationService
+class SmsService
 {
-    private NotificationInterface $strategy;
+    private SmsServiceInterface $strategy;
 
-    public function __construct(NotificationInterface $strategy)
+    public function __construct(SmsServiceInterface $strategy)
     {
         $this->strategy = $strategy;
     }
