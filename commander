@@ -1,0 +1,29 @@
+#!/bin/bash
+case "$1" in
+    "initiate")
+        # get packages
+        composer install
+        # Run Docker Compose
+        docker-compose up -d
+
+        sleep 10
+
+        # Execute Laravel commands
+        docker exec -it bank_laravel.test_1 bash -c "php artisan migrate && php artisan db:seed"
+        ;;
+    "up")
+        # Run Docker Compose
+        docker-compose up -d
+        ;;
+    "down")
+            # Run Docker Compose
+            docker-compose down
+            ;;
+    "lint")
+       ./vendor/bin/pint --test
+        ;;
+    # Add more cases for other parameters if needed
+    *)
+        echo "Unknown parameter: $1"
+        ;;
+esac
