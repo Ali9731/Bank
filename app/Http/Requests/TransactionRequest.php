@@ -31,12 +31,10 @@ class TransactionRequest extends FormRequest
         return [
             'from_card' => [
                 'required',
-                'digits:16',
                 'regex:'.Config::get('app.cardNumberRegex'),
             ],
             'to_card' => [
                 'required',
-                'digits:16',
                 'regex:'.Config::get('app.cardNumberRegex'),
             ],
             'amount' => 'required|integer|between:'.$this->transactionSettings->min_transaction.','.$this->transactionSettings->max_transaction,
@@ -47,12 +45,10 @@ class TransactionRequest extends FormRequest
     {
         return [
             'from_card.required' => __('messages.from_card_field.required'),
-            'from_card.digits' => __('messages.from_card_field.invalid'),
             'from_card.regex' => __('messages.from_card_field.regex'),
             'to_card.required' => __('messages.from_card_field.required'),
-            'to_card.digits' => __('messages.from_card_field.invalid'),
             'to_card.regex' => __('messages.from_card_field.regex'),
-
+            'amount.required' => __('messages.amount_field.required'),
         ];
     }
 
