@@ -27,6 +27,8 @@ the card validation regex is not compatible with iranian credit cards but its co
 ```
 ./commander initiate
 ```
+then choose yes for every questions in cli </br>
+
 Or
 ```
 # get packages
@@ -36,6 +38,8 @@ Or
 
         3 - docker exec -it bank_laravel.test_1 bash -c "php artisan migrate && php artisan db:seed"
 ```
+
+then choose yes for every questions in cli
 
 2 - To test code with linter run this command
 ```
