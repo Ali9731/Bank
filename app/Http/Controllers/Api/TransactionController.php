@@ -8,6 +8,7 @@ use App\Http\Repositories\CommissionRepository;
 use App\Http\Repositories\TransactionRepository;
 use App\Http\Repositories\UserRepository;
 use App\Http\Requests\TransactionRequest;
+use App\Http\Resources\UserResource;
 use App\Repositories\TransactionSettingRepository;
 use App\Services\Sms\SmsService;
 use App\Services\Sms\Strategies\KavehNegar;
@@ -115,11 +116,12 @@ class TransactionController extends Controller
             ], Response::HTTP_OK);
         } else {
             DB::rollBack();
-            Log::error('transaction failed : '. 'transaction not saved', [
+            Log::error('transaction failed : '.'transaction not saved', [
                 'source' => $from->id,
                 'destination' => $to->id,
                 'amount' => $data['amount'],
             ]);
+
             return response([
                 'error' => [
                     'message' => __('messages.transaction_failed'),
@@ -133,6 +135,6 @@ class TransactionController extends Controller
     {
         $userIds = $this->transactionRepository->topUsersIds();
 
-        return response()->json(['users' => $this->userRepository->getByIdsAndNTransactions($userIds, 10)]);
+        return response()->json(UserResource::collection($this->userRepository->getByIdsAndNTransactions($userIds, 10)));
     }
 }

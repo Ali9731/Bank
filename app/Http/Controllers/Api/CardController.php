@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\CardRepository;
+use App\Http\Resources\CardResource;
 
 class CardController extends Controller
 {
@@ -16,6 +17,6 @@ class CardController extends Controller
 
     public function index()
     {
-        return $this->cardRepository->all();
+        return response()->json(CardResource::collection($this->cardRepository->all()));
     }
 }
