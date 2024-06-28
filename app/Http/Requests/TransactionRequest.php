@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Repositories\TransactionSettingRepository;
+use App\Repositories\Transaction\TransactionRepository;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Config;
 
@@ -12,7 +12,7 @@ class TransactionRequest extends FormRequest
 
     public function __construct(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], $content = null)
     {
-        $this->transactionSettings = (new TransactionSettingRepository())->latest();
+        $this->transactionSettings = (new TransactionRepository())->settings();
         parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
     }
 
