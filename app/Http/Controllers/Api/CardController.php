@@ -3,17 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\CardRepository;
 use App\Http\Resources\CardResource;
+use App\Repositories\Card\CardRepositoryInterface;
 
 class CardController extends Controller
 {
-    private $cardRepository;
-
-    public function __construct()
-    {
-        $this->cardRepository = new CardRepository();
-    }
+    public function __construct(protected CardRepositoryInterface $cardRepository) {}
 
     public function index()
     {
