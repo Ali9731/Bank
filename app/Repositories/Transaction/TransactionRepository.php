@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Repositories;
+namespace App\Repositories\Transaction;
 
 use App\Models\Transaction;
-use App\Repositories\RepositoryInterface;
+use App\Models\TransactionSetting;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class TransactionRepository implements RepositoryInterface
+class TransactionRepository implements TransactionRepositoryInterface
 {
     public function all() {}
 
@@ -27,17 +27,8 @@ class TransactionRepository implements RepositoryInterface
             ->get()->pluck('user_id');
     }
 
-    public function update(array $data, $id) {}
-
-    public function delete($id) {}
-
-    public function find($id)
+    public function settings()
     {
-        //
-    }
-
-    public function latest()
-    {
-        //
+        return TransactionSetting::query()->latest('updated_at')->first();
     }
 }

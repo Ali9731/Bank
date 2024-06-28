@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Account;
 
-interface RepositoryInterface
+interface AccountRepositoryInterface
 {
     public function all();
 

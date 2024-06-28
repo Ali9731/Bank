@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Repositories;
+namespace App\Repositories\User;
 
 use App\Models\User;
-use App\Repositories\RepositoryInterface;
 
-class UserRepository implements RepositoryInterface
+class UserRepository implements UserRepositoryInterface
 {
     public function all()
     {
@@ -17,21 +16,5 @@ class UserRepository implements RepositoryInterface
         return User::query()->whereIn('id', $ids)->with(['transactions' => function ($query) use ($count) {
             $query->orderBY('id', 'desc')->take($count);
         }])->get();
-    }
-
-    public function create(array $data) {}
-
-    public function update(array $data, $id) {}
-
-    public function delete($id) {}
-
-    public function find($id)
-    {
-        //
-    }
-
-    public function latest()
-    {
-        //
     }
 }
