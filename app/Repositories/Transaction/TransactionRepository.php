@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionRepository implements TransactionRepositoryInterface
 {
-    public function all() {}
-
     public function create(array $data)
     {
         return Transaction::on('mysql')->create($data);

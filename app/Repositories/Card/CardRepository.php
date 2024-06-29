@@ -11,11 +11,6 @@ class CardRepository implements CardRepositoryInterface
         return Card::query()->with('account')->get();
     }
 
-    public function find($id)
-    {
-        return Card::query()->findOrFail($id);
-    }
-
     public function findByColumnWith($column, $value, $relations = [])
     {
         return Card::query()->where($column, $value)->with($relations)->first();
